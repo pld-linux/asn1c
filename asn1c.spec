@@ -1,5 +1,5 @@
 Summary:	The ASN.1 to C compiler
-Summary(pl):	Kompilator ASN.1 do C
+Summary(pl.UTF-8):   Kompilator ASN.1 do C
 Name:		asn1c
 Version:	0.9.19
 Release:	0.1
@@ -17,9 +17,9 @@ The asn1c compiler turns ASN.1 specifications into C language source
 files containing the BER/CER/DER/XER encoders and decoders for the
 given abstract notation.
 
-%description -l pl
-Kompilator asn1c zamienia specyfikacje ASN.1 na pliki ¼ród³owe w
-jêzyku C zawieraj±ce funkcje koduj±ce i dekoduj±ce BER/CER/DER/XER dla
+%description -l pl.UTF-8
+Kompilator asn1c zamienia specyfikacje ASN.1 na pliki ÅºrÃ³dÅ‚owe w
+jÄ™zyku C zawierajÄ…ce funkcje kodujÄ…ce i dekodujÄ…ce BER/CER/DER/XER dla
 podanej notacji abstrakcyjnej.
 
 %prep
