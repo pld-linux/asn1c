@@ -1,5 +1,5 @@
 Summary:	The ASN.1 to C compiler
-Summary(pl.UTF-8):   Kompilator ASN.1 do C
+Summary(pl.UTF-8):	Kompilator ASN.1 do C
 Name:		asn1c
 Version:	0.9.19
 Release:	0.1
