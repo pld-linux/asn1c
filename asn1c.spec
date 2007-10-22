@@ -1,12 +1,12 @@
 Summary:	The ASN.1 to C compiler
 Summary(pl.UTF-8):	Kompilator ASN.1 do C
 Name:		asn1c
-Version:	0.9.19
-Release:	0.1
+Version:	0.9.21
+Release:	1
 License:	BSD
 Group:		Development/Languages
 Source0:	http://lionet.info/soft/%{name}-%{version}.tar.gz
-# Source0-md5:	6c555d806fa0fa465d1838076f27c385
+# Source0-md5:	0d06f96d345530e66e44e7bfee2e0aed
 URL:		http://asn1c.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
