@@ -1,15 +1,17 @@
 Summary:	The ASN.1 to C compiler
 Summary(pl.UTF-8):	Kompilator ASN.1 do C
 Name:		asn1c
-Version:	0.9.21
+Version:	0.9.28
 Release:	1
 License:	BSD
 Group:		Development/Languages
 Source0:	http://lionet.info/soft/%{name}-%{version}.tar.gz
-# Source0-md5:	0d06f96d345530e66e44e7bfee2e0aed
-URL:		http://asn1c.sourceforge.net/
-BuildRequires:	autoconf
+# Source0-md5:	e78906866d7ea784a58b3d340bdec8ea
+URL:		http://github.com/vlm/asn1c
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
+BuildRequires:	libtool >= 2:2
+BuildRequires:	sed >= 4.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -25,30 +27,39 @@ podanej notacji abstrakcyjnej.
 %prep
 %setup -q
 
+%{__sed} -i -e '1s,/usr/bin/env perl,%{__perl},' examples/crfc2asn1.pl
+
 %build
-%{__aclocal}
+%{__libtoolize}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	--disable-silent-rules
+
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install-exec \
+%{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-%{__make} -C skeletons install-data \
-	DESTDIR=$RPM_BUILD_ROOT
-%{__make} -C asn1c install-man \
-	DESTDIR=$RPM_BUILD_ROOT
+
+# packaged as %doc
+%{__rm} -r $RPM_BUILD_ROOT%{_docdir}/asn1c
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README FAQ COPYING ChangeLog BUGS TODO doc/asn1c-usage.pdf doc/asn1c-usage.html
-%attr(755,root,root) %{_bindir}/*
+%doc AUTHORS BUGS ChangeLog FAQ LICENSE README.md TODO doc/asn1c-{quick,usage}.pdf
+%attr(755,root,root) %{_bindir}/asn1c
+%attr(755,root,root) %{_bindir}/crfc2asn1.pl
+%attr(755,root,root) %{_bindir}/enber
+%attr(755,root,root) %{_bindir}/unber
 %{_datadir}/asn1c
-%{_mandir}/man1/*
+%{_mandir}/man1/asn1c.1*
+%{_mandir}/man1/enber.1*
+%{_mandir}/man1/unber.1*
